@@ -47,3 +47,5 @@ const parsed = parseUUID('7ed9e77e-34b8-400e-b684-9093c550b4f9', true);
 
 console.log(uuid); // 'UUID <7ed9e77e-34b8-400e-b684-9093c550b4f9>'
 ```
+
+See more here: https://minecraftjs.github.io/uuid/
