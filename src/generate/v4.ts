@@ -12,16 +12,10 @@ import { UUID } from '../UUID';
  */
 export function generateV4(options?: GenerateV4Options): UUID {
   const generated = randomUUID(options);
-  return parseUUID(generated, options?.disableTypeCheck);
+  return parseUUID(generated, true);
 }
 
 /**
  * Options that can be passed to the `generateV4` function
  */
-export interface GenerateV4Options extends RandomUUIDOptions {
-  /**
-   * Whether or not to disable type checking when parsing the UUID.
-   * Significantly improves performance, but can be risky.
-   */
-  disableTypeCheck?: boolean;
-}
+export interface GenerateV4Options extends RandomUUIDOptions {}
