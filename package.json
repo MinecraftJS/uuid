@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "@minecraft-js/uuid",
   "version": "1.0.0",
-  "description": "todo: change",
+  "description": "Serialize, deserialize and generate UUIDs in JavaScript",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MinecraftJS/template.git"
+    "url": "git+https://github.com/MinecraftJS/uuid.git"
   },
   "keywords": [
     "minecraftjs"
   ],
-  "author": "todo: change",
+  "author": "RichardDorian",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MinecraftJS/template/issues"
+    "url": "https://github.com/MinecraftJS/uuid/issues"
   },
-  "homepage": "https://github.com/MinecraftJS/template#readme",
-  "dependencies": {},
+  "homepage": "https://github.com/MinecraftJS/uuid#readme",
   "devDependencies": {
+    "@types/node": "^18.7.13",
     "prettier": "^2.6.1",
     "typescript": "^4.6.3"
   },
