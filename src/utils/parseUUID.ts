@@ -18,8 +18,8 @@ export function parseUUID(uuid: string, disableTypeCheck?: boolean): UUID {
 
   uuid = uuid.replace(/-/g, '');
 
-  const mostSigBits = Buffer.from(uuid.slice(0, 8), 'hex');
-  const leastSigBits = Buffer.from(uuid.slice(8, 16), 'hex');
+  const mostSigBits = Buffer.from(uuid.slice(0, 16), 'hex');
+  const leastSigBits = Buffer.from(uuid.slice(16, 32), 'hex');
 
   return new UUID(mostSigBits, leastSigBits);
 }
