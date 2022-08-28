@@ -21,21 +21,21 @@ export class UUID {
    * @param leastSigBits The least significant bits of the UUID
    */
   public constructor(mostSigBits: Buffer, leastSigBits: Buffer) {
-    this.bytes = Buffer.allocUnsafe(128);
+    this.bytes = Buffer.allocUnsafe(16);
     mostSigBits.copy(this.bytes);
-    leastSigBits.copy(this.bytes, 32);
+    leastSigBits.copy(this.bytes, 8);
 
     this.stringCache = {};
   }
 
   /** The most significant 64 bits of this UUID's 128 bit value */
   public getMostSignificantBits(): Buffer {
-    return this.bytes.subarray(0, 16);
+    return this.bytes.subarray(0, 8);
   }
 
   /** The least significant 64 bits of this UUID's 128 bit value */
   public getLeastSignificantBits(): Buffer {
-    return this.bytes.subarray(16, 32);
+    return this.bytes.subarray(8, 16);
   }
 
   /** Converts this `UUID` instance to a JSON valid format */
@@ -50,7 +50,7 @@ export class UUID {
     const cached = this.stringCache[key];
     if (cached) return cached;
 
-    const string = this.bytes.toString();
+    const string = this.bytes.toString('hex');
     const result = dashes ? addDashesToUUID(string) : string;
     this.stringCache[key] = result;
 
@@ -75,10 +75,10 @@ export class UUID {
    * ```javascript
    * const uuid = new UUID(...);
    *
-   * # Without this method
+   * // Without this method
    * console.log('UUID: ' + uuid); // -> 'UUID: [object Object]'
    *
-   * # With this method
+   * // With this method
    * console.log('UUID: ' + uuid); // -> 'UUID: 7ed9e77e-34b8-400e-b684-9093c550b4f9'
    * ```
    * @returns A string containing the UUID
