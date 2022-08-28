@@ -9,7 +9,7 @@ import { isStringUUID } from './typeAssertion';
  */
 export function parseUUID(uuid: string, disableTypeCheck?: boolean): UUID {
   if (
-    disableTypeCheck === true &&
+    disableTypeCheck !== true &&
     !(isStringUUID(uuid) || isStringUUID(uuid, false))
   )
     throw new TypeError(
@@ -18,8 +18,8 @@ export function parseUUID(uuid: string, disableTypeCheck?: boolean): UUID {
 
   uuid = uuid.replace(/-/g, '');
 
-  const mostSigBits = Buffer.from(uuid.slice(0, 8));
-  const leastSigBits = Buffer.from(uuid.slice(8, 16));
+  const mostSigBits = Buffer.from(uuid.slice(0, 8), 'hex');
+  const leastSigBits = Buffer.from(uuid.slice(8, 16), 'hex');
 
   return new UUID(mostSigBits, leastSigBits);
 }
