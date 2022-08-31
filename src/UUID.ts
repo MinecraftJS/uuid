@@ -2,6 +2,7 @@ import { addDashesToUUID } from './utils/addDashesToUUID';
 
 /**
  * UUID Class
+ * @see https://en.wikipedia.org/wiki/Universally_unique_identifier
  */
 export class UUID {
   /** Buffer containing the bytes for this UUID */
@@ -21,7 +22,7 @@ export class UUID {
    * @param leastSigBits The least significant bits of the UUID
    */
   public constructor(mostSigBits: Buffer, leastSigBits: Buffer) {
-    this.bytes = Buffer.allocUnsafe(16);
+    this.bytes = Buffer.alloc(16);
     mostSigBits.copy(this.bytes);
     leastSigBits.copy(this.bytes, 8);
 
